@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import logo from './logo.svg'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import VendingMachine from "./VendingMachine"
 
-
-/** Component for entire page.
+/** Component to render Vending Machine App
  *
  * Props: none
  * State: none
@@ -11,28 +12,17 @@ import './App.css';
 */
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  function incrCount() {
-    setCount(count => count + 1);
-  }
 
   return (
     <div className="App">
-      <main>
-        <img src={logo} className="App-logo" alt="Rithm" />
-        <h1>Rithm React Starter</h1>
-        <p>
-          <button
-              className="btn btn-primary"
-              onClick={incrCount}>
-            Clicked: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>src/App.jsx</code>
-        </p>
-      </main>
+      <BrowserRouter>
+        <VendingMachine />
+        <Routes>
+          <Route path="/chips" element={<Chips />} />
+
+        </Routes>
+
+      </BrowserRouter>
     </div>
   );
 };
